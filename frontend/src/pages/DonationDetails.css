@@ -1,0 +1,268 @@
+/* ===== DONATION DETAILS (STEP 2 OF CLAIM FLOW) ===== */
+.donation-details-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. Header Bar */
+.details-header-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #ECECEC;
+  padding: 0 16px 12px;
+  z-index: 20;
+}
+
+.details-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 2px;
+}
+
+.details-back-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.details-back-btn:hover {
+  background: #F5F5F5;
+}
+
+.details-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+/* 2. Scrollable Body */
+.details-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.details-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero Photography Card */
+.details-hero-card {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: #2E2822;
+  flex-shrink: 0;
+}
+
+/* Title & Veg Badge Row */
+.details-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.details-food-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1A1A1A;
+  line-height: 1.25;
+}
+
+.details-veg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #C8E6C9;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.veg-badge-check {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #2E7D32;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Metadata Information Card */
+.details-meta-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 6px 14px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid #F5F5F5;
+  gap: 12px;
+}
+
+.meta-info-row:last-child {
+  border-bottom: none;
+}
+
+.meta-info-row.location-row {
+  align-items: flex-start;
+}
+
+.meta-info-row.instructions-row {
+  align-items: flex-start;
+}
+
+.meta-label-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.meta-label-col.align-top {
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+.meta-icon {
+  font-size: 15px;
+}
+
+.meta-key {
+  font-size: 12.5px;
+  color: #616161;
+  font-weight: 500;
+}
+
+.meta-value-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.meta-strong-val {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.meta-donor-val {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.meta-location-val {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #1A1A1A;
+  text-align: right;
+}
+
+.view-map-link-btn {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #2E7D32;
+  border-radius: 8px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  transition: all 0.2s;
+}
+
+.view-map-link-btn:hover {
+  background: #C8E6C9;
+}
+
+.meta-text-val {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #424242;
+}
+
+.meta-safe-until-val {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #D32F2F;
+}
+
+.meta-instruction-text {
+  font-size: 12px;
+  color: #424242;
+  line-height: 1.35;
+  text-align: right;
+  max-width: 200px;
+}
+
+/* 3. Docked Bottom Bar with Confirm Claim Button */
+.details-bottom-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-top: 1px solid #EEEEEE;
+  padding: 12px 16px 14px;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.04);
+  z-index: 20;
+}
+
+.confirm-claim-action-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.28);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.confirm-claim-action-btn:hover {
+  background: #1B5E20;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.36);
+}
+

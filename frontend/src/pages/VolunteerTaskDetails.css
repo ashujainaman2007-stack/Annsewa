@@ -1,0 +1,204 @@
+/* ===== VOLUNTEER TASK DETAILS (STEP 2) ===== */
+.task-details-page-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. Header Bar */
+.task-details-header-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #ECECEC;
+  padding: 0 16px 12px;
+  z-index: 20;
+}
+
+.task-details-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 2px;
+}
+
+.task-back-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.task-back-btn:hover {
+  background: #F5F5F5;
+}
+
+.task-details-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+/* 2. Scrollable Body */
+.task-details-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.task-details-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+.task-hero-card {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: #2E2822;
+  flex-shrink: 0;
+}
+
+.task-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.task-type-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #C8E6C9;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.task-main-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1A1A1A;
+  line-height: 1.25;
+}
+
+/* Metadata Information Card */
+.task-meta-info-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 6px 14px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.task-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid #F5F5F5;
+  gap: 12px;
+}
+
+.task-meta-row:last-child {
+  border-bottom: none;
+}
+
+.task-meta-row.instructions-row {
+  align-items: flex-start;
+}
+
+.task-meta-key-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.task-meta-key-col.align-top {
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+.task-meta-icon {
+  font-size: 15px;
+}
+
+.task-meta-label {
+  font-size: 12.5px;
+  color: #616161;
+  font-weight: 500;
+}
+
+.task-meta-val-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.task-val-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.task-instructions-para {
+  font-size: 12px;
+  color: #424242;
+  line-height: 1.35;
+  text-align: right;
+  max-width: 200px;
+}
+
+/* 3. Docked Bottom Bar */
+.task-details-bottom-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-top: 1px solid #EEEEEE;
+  padding: 12px 16px 14px;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.04);
+  z-index: 20;
+}
+
+.claim-this-task-action-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.28);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.claim-this-task-action-btn:hover {
+  background: #1B5E20;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.36);
+}
+

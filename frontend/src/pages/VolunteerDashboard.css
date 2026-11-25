@@ -1,0 +1,246 @@
+/* ===== VOLUNTEER DASHBOARD - BROWSE TASKS (STEP 1) ===== */
+.volunteer-page-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. Top Green Gradient Header */
+.volunteer-top-green-header {
+  flex-shrink: 0;
+  background: linear-gradient(175deg, #1B5E20 0%, #2E7D32 60%, #388E3C 100%);
+  border-radius: 0 0 24px 24px;
+  padding: 0 16px 14px;
+  box-shadow: 0 4px 16px rgba(27, 94, 32, 0.15);
+  z-index: 20;
+}
+
+.volunteer-brand-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 4px 10px;
+}
+
+/* 2. Intro Greeting & 4 Quick Tiles Section */
+.volunteer-intro-section {
+  flex-shrink: 0;
+  padding: 12px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.volunteer-greeting-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.volunteer-hi-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #1A1A1A;
+}
+
+.volunteer-hi-subtitle {
+  font-size: 12px;
+  color: #616161;
+  line-height: 1.35;
+}
+
+/* 4 Quick Action Tiles */
+.volunteer-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.vol-action-tile {
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 10px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.vol-action-tile:hover {
+  border-color: #A5D6A7;
+  transform: translateY(-1px);
+}
+
+.vol-action-tile.active-tile {
+  background: #E8F5E9;
+  border: 1.5px solid #2E7D32;
+  box-shadow: 0 3px 10px rgba(46, 125, 50, 0.15);
+}
+
+.tile-emoji {
+  font-size: 18px;
+}
+
+.tile-label-text {
+  font-size: 10px;
+  font-weight: 600;
+  color: #555555;
+  text-align: center;
+  line-height: 1.25;
+  white-space: pre-line;
+}
+
+.vol-action-tile.active-tile .tile-label-text {
+  color: #1B5E20;
+  font-weight: 700;
+}
+
+/* 3. Scrollable Nearby Tasks Body */
+.volunteer-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 16px 85px; /* Ensures content scrolls safely above fixed BottomNav */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.volunteer-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+.nearby-tasks-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nearby-tasks-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.nearby-view-all-link {
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2E7D32;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.nearby-view-all-link:hover {
+  opacity: 0.8;
+}
+
+/* Tasks Feed & Cards */
+.volunteer-tasks-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vol-task-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 12px 14px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.vol-task-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border-color: #E0E0E0;
+}
+
+.vol-food-thumb {
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.vol-card-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.vol-task-tag-pill {
+  font-size: 9.5px;
+  font-weight: 600;
+  background: #F5F5F5;
+  color: #616161;
+  padding: 1.5px 6px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.vol-task-food-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vol-task-route-desc {
+  font-size: 11px;
+  color: #616161;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vol-task-time-row {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2E7D32;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+}
+
+.vol-card-action {
+  flex-shrink: 0;
+}
+
+.vol-claim-pill-btn {
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3);
+  transition: all 0.2s;
+}
+
+.vol-claim-pill-btn:hover {
+  background: #1B5E20;
+  transform: scale(1.05);
+}

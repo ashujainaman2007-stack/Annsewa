@@ -1,0 +1,398 @@
+.home-page-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.home-top-header {
+  flex-shrink: 0;
+  background: linear-gradient(175deg, #1B5E20 0%, #2E7D32 55%, #388E3C 100%);
+  border-radius: 0 0 26px 26px;
+  padding: 0 16px 18px;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(27, 94, 32, 0.15);
+  z-index: 10;
+}
+
+.home-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 4px 14px;
+}
+
+.icon-badge-btn {
+  background: rgba(255, 255, 255, 0.15);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.icon-badge-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.bell-red-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #E53935;
+  border: 1.5px solid #1B5E20;
+}
+
+/* Hero Card */
+.home-hero-card {
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  margin-top: 2px;
+}
+
+.hero-text-block {
+  flex: 1;
+}
+
+.hero-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1A1A;
+  line-height: 1.25;
+}
+
+.hero-green-highlight {
+  color: #2E7D32;
+}
+
+.hero-card-subtitle {
+  font-size: 11px;
+  color: #757575;
+  margin-top: 3px;
+}
+
+.hero-food-visual {
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+/* Home Scroll Body */
+.home-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 16px 85px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.home-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Quick Actions */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.quick-action-card {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.quick-action-icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.08);
+}
+
+.quick-action-card:hover .quick-action-icon-circle {
+  background: #C8E6C9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.15);
+}
+
+.quick-action-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.2;
+}
+
+/* Section Title */
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.view-all-link {
+  background: none;
+  border: none;
+  color: #2E7D32;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Donation Card */
+.donation-listing-card {
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding: 12px 14px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.donation-card-top-row {
+  display: flex;
+  gap: 12px;
+}
+
+.donation-food-thumb-wrap {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  flex-shrink: 0;
+}
+
+.veg-badge-pill {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  border: 1px solid #4CAF50;
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #2E7D32;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.veg-green-circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2E7D32;
+}
+
+.donation-card-details {
+  flex: 1;
+}
+
+.donation-card-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.donation-food-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 2px;
+}
+
+.urgent-badge {
+  background: #FFEBEE;
+  color: #D32F2F;
+  border-radius: 12px;
+  padding: 1.5px 7px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.donation-org-location {
+  font-size: 11.5px;
+  color: #616161;
+  margin-bottom: 2px;
+}
+
+.donation-safe-until {
+  font-size: 11px;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.donation-geo-address {
+  font-size: 10.5px;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.donation-card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #F5F5F5;
+}
+
+.donation-tags-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.servings-count {
+  font-size: 11.5px;
+  color: #424242;
+}
+
+.cooked-meal-pill {
+  font-size: 10px;
+  color: #616161;
+  background: #F5F5F5;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.claim-green-btn {
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.claim-green-btn:hover {
+  background: #1B5E20;
+}
+
+/* Our Impact (This Month) Bottom Banner */
+.home-impact-banner {
+  background: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.home-impact-banner:hover {
+  background: #DCEDC8;
+  transform: translateY(-1px);
+}
+
+.impact-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.impact-sprout-icon {
+  font-size: 20px;
+}
+
+.impact-banner-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.impact-banner-label strong {
+  font-size: 11.5px;
+  color: #1B5E20;
+  line-height: 1.1;
+}
+
+.impact-banner-label span {
+  font-size: 9.5px;
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.impact-metrics-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.impact-mini-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.impact-mini-stat .stat-emoji {
+  font-size: 11px;
+}
+
+.impact-mini-stat strong {
+  font-size: 12.5px;
+  color: #1B5E20;
+  line-height: 1;
+}
+
+.impact-mini-stat small {
+  font-size: 8.5px;
+  color: #555555;
+  white-space: nowrap;
+}

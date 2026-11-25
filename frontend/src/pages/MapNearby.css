@@ -1,0 +1,820 @@
+/* ===== MAP TAB - LIVE LEAFLET MAP & FIXED CONTAINER ===== */
+.map-page-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden; /* Keeps entire page locked in mobile chassis */
+}
+
+/* 1. Top Green Gradient Header - Fixed at Top */
+.map-top-green-header {
+  flex-shrink: 0;
+  background: linear-gradient(175deg, #1B5E20 0%, #2E7D32 60%, #388E3C 100%);
+  border-radius: 0 0 24px 24px;
+  padding: 0 16px 14px;
+  box-shadow: 0 4px 16px rgba(27, 94, 32, 0.15);
+  z-index: 20;
+}
+
+.map-brand-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 4px 10px;
+}
+
+/* 2. Search Bar & Filter Chips Section - Fixed Docked */
+.map-search-filter-section {
+  flex-shrink: 0;
+  padding: 12px 16px 8px;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #EEEEEE;
+  z-index: 10;
+}
+
+.map-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F5F5F5;
+  border-radius: 12px;
+  padding: 8px 14px;
+  border: 1px solid #E0E0E0;
+  position: relative;
+}
+
+.search-input {
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: #1A1A1A;
+  width: 100%;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #9E9E9E;
+}
+
+.search-clear-btn {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-filter-chips-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.map-filter-chips-row::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip-btn {
+  padding: 5px 14px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #E0E0E0;
+  background: #FAFAFA;
+  color: #555555;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.filter-chip-btn:hover {
+  background: #E8F5E9;
+  border-color: #A5D6A7;
+  color: #2E7D32;
+}
+
+.filter-chip-btn.active {
+  background: #2E7D32;
+  border-color: #2E7D32;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.25);
+}
+
+/* 3. Scrollable Body (Only this area scrolls) */
+.map-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 85px; /* Ensures content scrolls safely above fixed BottomNav */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.map-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   LIVE LEAFLET MAP CANVAS & CONTROLS
+   ========================================================================== */
+.live-map-wrapper {
+  width: 100%;
+  height: 310px;
+  position: relative;
+  overflow: hidden;
+  background: #E2ECE2;
+  flex-shrink: 0;
+}
+
+.leaflet-live-map-canvas {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Hide default leaflet bar on mobile */
+.leaflet-control-zoom {
+  display: none !important;
+}
+
+/* Live Radar Status Pill */
+.live-map-status-pill {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 500;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.status-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2E7D32;
+  box-shadow: 0 0 8px #4CAF50;
+  animation: radarBlink 1.6s infinite;
+}
+
+@keyframes radarBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.status-live-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1B5E20;
+  letter-spacing: 0.2px;
+}
+
+/* Map Floating Controls */
+.map-floating-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 500;
+}
+
+.map-ctrl-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid #ECECEC;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #424242;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.map-ctrl-btn:hover {
+  background: #F1F8E9;
+  color: #2E7D32;
+  transform: scale(1.08);
+}
+
+.map-ctrl-btn.locate-me {
+  background: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.25);
+  border-color: #C8E6C9;
+}
+
+.map-ctrl-btn.locate-me:hover {
+  background: #E8F5E9;
+}
+
+.map-ctrl-btn.locate-me.locating {
+  animation: pulseLocate 1s infinite;
+}
+
+@keyframes pulseLocate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); box-shadow: 0 0 16px rgba(46, 125, 50, 0.5); }
+  100% { transform: scale(1); }
+}
+
+/* Temporary Map Notice Pill */
+.map-notice-pill {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(27, 94, 32, 0.94);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  z-index: 600;
+  white-space: nowrap;
+  animation: noticeFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes noticeFade {
+  0% { opacity: 0; transform: translate(-50%, 10px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ==========================================================================
+   CUSTOM LEAFLET VECTOR PIN MARKERS
+   ========================================================================== */
+
+/* 1. User Location Pulse Pin */
+.user-marker-container {
+  background: none;
+  border: none;
+}
+
+.user-pulse-bubble {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-pulse-wave {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(25, 118, 210, 0.25);
+  border: 1.5px solid #1976D2;
+  animation: userWave 2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes userWave {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.user-center-point {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1976D2;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+/* 2. NGO Marker Pin (Matches exact speech bubble mockup) */
+.ngo-marker-container {
+  background: none;
+  border: none;
+}
+
+.custom-ngo-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-ngo-pin:hover, .custom-ngo-pin.active-selection {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.marker-speech-bubble {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 4px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ECECEC;
+  white-space: nowrap;
+}
+
+.bubble-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.bubble-distance {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #2E7D32;
+}
+
+.ngo-pin-head {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #D32F2F;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3px;
+  z-index: 2;
+}
+
+.ngo-pin-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #D32F2F;
+  margin-top: -1px;
+}
+
+/* 3. Donation Marker Pin (Green bowl with glowing pulse) */
+.donation-marker-container {
+  background: none;
+  border: none;
+}
+
+.custom-donation-pin {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.custom-donation-pin:hover, .custom-donation-pin.active-selection {
+  transform: scale(1.15);
+}
+
+.donation-pin-pulse {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(46, 125, 50, 0.2);
+  animation: donationRadar 2s infinite;
+}
+
+@keyframes donationRadar {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.donation-pin-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2E7D32;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* 4. Volunteer Marker Pin */
+.vol-marker-container {
+  background: none;
+  border: none;
+}
+
+.custom-volunteer-pin {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.custom-volunteer-pin:hover, .custom-volunteer-pin.active-selection {
+  transform: scale(1.15);
+}
+
+.vol-pin-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #FF8F00;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vol-emoji {
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   4. BOTTOM DOCKED SECTION: NEARBY NGOS & DYNAMIC DETAIL CARD
+   ========================================================================== */
+.map-bottom-container {
+  padding: 14px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nearby-ngos-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nearby-ngos-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.view-all-link {
+  background: none;
+  border: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #2E7D32;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: opacity 0.2s;
+}
+
+.view-all-link:hover {
+  opacity: 0.8;
+}
+
+/* Action Card */
+.ngo-map-action-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 13px 14px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #EEEEEE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s;
+}
+
+.ngo-map-action-card.donation-card-highlight {
+  border-left: 4px solid #2E7D32;
+}
+
+.ngo-info-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.ngo-logo-box, .donation-card-icon-box, .vol-card-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.vol-card-icon-box {
+  background: #FFF3E0;
+  border-color: #FFE0B2;
+}
+
+.ngo-text-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.ngo-name-text {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.ngo-rating-distance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+}
+
+.rating-pill {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.rating-val {
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.reviews-cnt {
+  color: #757575;
+}
+
+.dist-sep {
+  color: #BDBDBD;
+}
+
+.dist-val {
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+.donation-servings-pill {
+  font-weight: 600;
+  color: #1B5E20;
+  background: #E8F5E9;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.donation-safe-timer {
+  font-size: 10.5px;
+  color: #616161;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+/* Action Buttons */
+.ngo-quick-circle-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ngo-circle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.ngo-circle-btn:hover {
+  background: #C8E6C9;
+  transform: scale(1.08);
+}
+
+.claim-quick-btn {
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(46, 125, 50, 0.3);
+  transition: all 0.2s;
+}
+
+.claim-quick-btn:hover {
+  background: #1B5E20;
+  transform: translateY(-1px);
+}
+
+/* Quick NGO selector pills list */
+.nearby-ngos-quick-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 0 2px;
+}
+
+.nearby-ngos-quick-list::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-ngo-item-pill {
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.quick-ngo-item-pill:hover, .quick-ngo-item-pill.active {
+  background: #E8F5E9;
+  border-color: #2E7D32;
+}
+
+.quick-ngo-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.quick-ngo-item-pill.active .quick-ngo-name {
+  color: #1B5E20;
+}
+
+.quick-ngo-dist {
+  font-size: 11px;
+  color: #2E7D32;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   5. FULL NEARBY NGOS LIST & INTERACTIVE STYLES
+   ========================================================================== */
+.ngos-count-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ngos-count-badge {
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 12px;
+  padding: 3px 9px;
+  border: 1px solid #C8E6C9;
+}
+
+.nearby-ngos-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.selected-ngo-card {
+  border: 1.5px solid #2E7D32 !important;
+  background: #F4FAF4 !important;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.14) !important;
+  transform: translateY(-1px);
+}
+
+.ngo-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ngo-mini-verified-badge {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #2E7D32;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ngo-area-location-text {
+  font-size: 11.5px;
+  color: #616161;
+  margin: 3px 0 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 215px;
+}
+
+.ngos-empty-feed {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  border: 1px dashed #CCCCCC;
+  color: #757575;
+  font-size: 13px;
+}
+
+/* Callout for Non-NGO Entities (Food Donation / Volunteer) */
+.map-selected-entity-callout {
+  background: #FFFFFF;
+  border: 1.5px solid #A5D6A7;
+  border-radius: 16px;
+  padding: 10px 12px 12px;
+  margin: 10px 16px 0;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeInSlide 0.25s ease-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.callout-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.callout-entity-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2E7D32;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.callout-close-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #757575;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.callout-close-btn:hover {
+  background: #EEEEEE;
+  color: #212121;
+}

@@ -1,0 +1,335 @@
+/* ===== VOLUNTEER ACTIVE TASK - EXECUTE TASK (STEP 4) ===== */
+.active-task-page-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. Header Bar */
+.active-task-header-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #ECECEC;
+  padding: 0 16px 12px;
+  z-index: 20;
+}
+
+.active-task-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 2px;
+}
+
+.active-back-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.active-back-btn:hover {
+  background: #F5F5F5;
+}
+
+.active-task-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+/* 2. Scrollable Body */
+.active-task-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.active-task-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Horizontal 4-Node Stepper */
+.horizontal-stepper-wrap {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 14px 12px 12px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.h-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.h-node-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h-node-circle.completed {
+  background: #2E7D32;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.35);
+}
+
+.h-node-circle.current {
+  background: #E8F5E9;
+  border: 2px solid #2E7D32;
+}
+
+.h-node-circle.pending {
+  background: #F5F5F5;
+  border: 1.5px solid #E0E0E0;
+}
+
+.h-node-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #616161;
+}
+
+.h-step-item.completed .h-node-label {
+  color: #1B5E20;
+  font-weight: 700;
+}
+
+.h-track-connector {
+  flex: 1;
+  height: 2px;
+  background: #E0E0E0;
+  margin: 0 6px -14px;
+}
+
+.h-track-connector.completed {
+  background: #2E7D32;
+}
+
+.h-track-connector.active {
+  background: #81C784;
+}
+
+/* Status Callout Card */
+.task-status-callout-card {
+  background: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.callout-circle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2E7D32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.callout-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.callout-main-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1B5E20;
+}
+
+.callout-sub-desc {
+  font-size: 11.5px;
+  color: #2E7D32;
+  line-height: 1.35;
+}
+
+/* Task Execution Card */
+.task-execution-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.execution-food-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.execution-thumb {
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.execution-food-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.execution-food-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.execution-servings-text {
+  font-size: 11.5px;
+  color: #616161;
+}
+
+.execution-divider {
+  height: 1px;
+  background: #F0F0F0;
+}
+
+.execution-location-unit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.loc-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.loc-type-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loc-name-text {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.navigate-pill-btn {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #2E7D32;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.navigate-pill-btn:hover {
+  background: #C8E6C9;
+}
+
+.execution-time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.time-spec-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.time-spec-label {
+  font-size: 10.5px;
+  color: #757575;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.time-spec-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.time-spec-val.urgency {
+  color: #D32F2F;
+}
+
+/* 3. Docked Bottom Action Button */
+.active-task-bottom-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-top: 1px solid #EEEEEE;
+  padding: 12px 16px 14px;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.04);
+  z-index: 20;
+}
+
+.execution-step-action-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.28);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.execution-step-action-btn:hover {
+  background: #1B5E20;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.36);
+}
+

@@ -1,0 +1,369 @@
+/* ===== NGO DASHBOARD / AVAILABLE DONATIONS (STEP 1) ===== */
+.ngo-page-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. Top Green Header */
+.ngo-top-green-header {
+  flex-shrink: 0;
+  background: linear-gradient(175deg, #1B5E20 0%, #2E7D32 60%, #388E3C 100%);
+  border-radius: 0 0 24px 24px;
+  padding: 0 16px 14px;
+  box-shadow: 0 4px 16px rgba(27, 94, 32, 0.15);
+  z-index: 20;
+}
+
+.ngo-brand-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 4px 10px;
+}
+
+/* 2. Subheader Greeting & Search Section */
+.ngo-greeting-section {
+  flex-shrink: 0;
+  padding: 12px 16px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ngo-greeting-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ngo-salute-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #1A1A1A;
+}
+
+.ngo-salute-subtitle {
+  font-size: 12px;
+  color: #616161;
+  line-height: 1.35;
+}
+
+.ngo-search-trigger-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.ngo-search-trigger-circle:hover {
+  background: #E8F5E9;
+  border-color: #A5D6A7;
+}
+
+/* Expandable search input */
+.ngo-search-expand-bar {
+  flex-shrink: 0;
+  margin: 0 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 8px 12px;
+  border: 1px solid #A5D6A7;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.08);
+}
+
+.ngo-search-input {
+  border: none;
+  background: none;
+  font-size: 12.5px;
+  width: 100%;
+  outline: none;
+  color: #1A1A1A;
+}
+
+/* Filter Pills */
+.ngo-filter-pills-row {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+  padding: 2px 16px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ngo-filter-pills-row::-webkit-scrollbar {
+  display: none;
+}
+
+.ngo-pill-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #E0E0E0;
+  background: #FFFFFF;
+  color: #555555;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.ngo-pill-btn:hover {
+  background: #E8F5E9;
+  border-color: #A5D6A7;
+  color: #2E7D32;
+}
+
+.ngo-pill-btn.active {
+  background: #2E7D32;
+  border-color: #2E7D32;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+}
+
+/* 3. Scrollable Donations List */
+.ngo-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px 16px 85px; /* Ensures content scrolls comfortably above fixed BottomNav */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ngo-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+.ngo-donations-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ngo-claim-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 12px 14px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.ngo-claim-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border-color: #E0E0E0;
+}
+
+.ngo-food-thumb {
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ngo-card-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ngo-food-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ngo-food-servings {
+  font-size: 11.5px;
+  color: #616161;
+}
+
+.ngo-food-location {
+  font-size: 11px;
+  color: #616161;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ngo-food-expiry {
+  font-size: 10.5px;
+  color: #D32F2F;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+}
+
+.ngo-food-expiry strong {
+  color: #D32F2F;
+}
+
+.ngo-card-action {
+  flex-shrink: 0;
+}
+
+.claim-green-pill-btn {
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3);
+  transition: all 0.2s;
+}
+
+.claim-green-pill-btn:hover {
+  background: #1B5E20;
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   INCOMING FOOD ALERT CARD FOR NGO
+   ========================================================================== */
+.ngo-incoming-alert-card {
+  margin: 0 16px 12px;
+  background: linear-gradient(135deg, #F1F8E9 0%, #FFFFFF 100%);
+  border: 1.5px solid #81C784;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  animation: alertPulseBorder 2.5s infinite alternate;
+  flex-shrink: 0;
+}
+
+@keyframes alertPulseBorder {
+  0% { border-color: #81C784; box-shadow: 0 4px 14px rgba(46, 125, 50, 0.1); }
+  100% { border-color: #2E7D32; box-shadow: 0 6px 18px rgba(46, 125, 50, 0.22); }
+}
+
+.incoming-alert-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-pulse-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #1B5E20;
+  letter-spacing: 0.3px;
+}
+
+.alert-pulse-circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2E7D32;
+  box-shadow: 0 0 6px #4CAF50;
+  animation: pulse 1.2s infinite;
+}
+
+.alert-time-tag {
+  font-size: 10.5px;
+  color: #757575;
+}
+
+.incoming-alert-content-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-food-symbol {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #E8F5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.alert-food-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.alert-food-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-food-details {
+  font-size: 11px;
+  color: #616161;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-claim-action-btn {
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.25);
+  transition: all 0.2s;
+}
+
+.alert-claim-action-btn:hover {
+  background: #1B5E20;
+  transform: scale(1.05);
+}
+

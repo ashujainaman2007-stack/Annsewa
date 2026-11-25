@@ -1,0 +1,299 @@
+/* ===== TRACK DONATION (STEP 4 OF CLAIM FLOW) ===== */
+.track-donation-container {
+  height: 100%;
+  width: 100%;
+  background: #F8FAF8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 1. Header Bar */
+.track-header-bar {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #ECECEC;
+  padding: 0 16px 12px;
+  z-index: 20;
+}
+
+.track-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 2px;
+}
+
+.track-back-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.track-back-btn:hover {
+  background: #F5F5F5;
+}
+
+.track-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+/* 2. Scrollable Body */
+.track-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.track-scroll-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Stepper Timeline Card */
+.track-timeline-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.track-step-item {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.track-node-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.step-badge-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-badge-circle.completed {
+  background: #2E7D32;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.35);
+}
+
+.step-badge-circle.active-truck {
+  background: #2E7D32;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.35);
+  animation: pulseNode 2s infinite;
+}
+
+@keyframes pulseNode {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); box-shadow: 0 0 12px rgba(46, 125, 50, 0.5); }
+  100% { transform: scale(1); }
+}
+
+.step-badge-circle.pending {
+  background: #F5F5F5;
+  border: 2px solid #E0E0E0;
+}
+
+.pending-ring-target {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #BDBDBD;
+}
+
+.track-stem-line {
+  width: 2px;
+  flex: 1;
+  min-height: 44px;
+  margin: 4px 0;
+}
+
+.track-stem-line.completed {
+  background: #2E7D32;
+}
+
+.track-stem-line.pending {
+  background: #E0E0E0;
+}
+
+/* Step Content */
+.track-step-content {
+  flex: 1;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.step-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.step-method-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #A5D6A7;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+
+.step-subtitle {
+  font-size: 12px;
+  color: #616161;
+  line-height: 1.35;
+}
+
+.step-timestamp {
+  font-size: 11px;
+  color: #757575;
+  margin-top: 1px;
+}
+
+.step-action-trigger-btn {
+  align-self: flex-start;
+  margin-top: 6px;
+  background: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #A5D6A7;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.step-action-trigger-btn:hover {
+  background: #C8E6C9;
+}
+
+.step-action-trigger-btn.complete-btn {
+  background: #2E7D32;
+  color: #FFFFFF;
+  border-color: #2E7D32;
+}
+
+.step-action-trigger-btn.complete-btn:hover {
+  background: #1B5E20;
+}
+
+.step-completed-badge {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2E7D32;
+  background: #E8F5E9;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* 3. Donation Summary Card */
+.donation-summary-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-card-heading {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.summary-item-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.summary-thumb-box {
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.summary-text-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-food-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.summary-servings-text {
+  font-size: 11.5px;
+  color: #616161;
+}
+
+.summary-loc-text {
+  font-size: 11.5px;
+  color: #616161;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.summary-safe-expiry {
+  font-size: 11px;
+  color: #D32F2F;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+}
+
+.summary-safe-expiry strong {
+  color: #D32F2F;
+}
+
